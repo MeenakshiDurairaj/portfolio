@@ -147,6 +147,97 @@
             object-fit: cover;
             margin-bottom: 1rem; /* Space below image */
         }
+
+        .music-player {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            z-index: 999;
+            font-size: 1rem;
+        }
+
+        #music-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .chatbot-widget {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            width: 200px;
+            background: #1e1e2f;
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
+            font-family: sans-serif;
+            overflow: hidden;
+            z-index: 1000;
+        }
+       
+
+        .chat-header {
+            background: /*#6c63ff;*/ linear-gradient(90deg, #2c3e50, #34495e);
+            padding: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+
+        .chat-messages {
+            height: 100px;
+            overflow-y: auto;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 0.6rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .chat-messages,
+        #user-input {
+            transition: all 0.3s ease;
+            opacity: 1;
+            max-height: 200px;
+            overflow: auto;
+        }
+
+            .chat-messages.hidden,
+            #user-input.hidden {
+                opacity: 0;
+                max-height: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+
+
     </style>
 </head>
 <body>
@@ -212,7 +303,7 @@
 
             <!-- Add more projects here -->
         </div>
-</section>
+    </section>
 
     <section id="skills">
         <h2>Skills</h2>
@@ -249,8 +340,100 @@
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-  AOS.init();
+        AOS.init();
     </script>
+
+    <div class="music-player">
+        <button id="music-toggle">🎵 Play Music</button>
+        <audio id="bg-music" loop>
+            <source src="background.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const music = document.getElementById("bg-music");
+        const toggle = document.getElementById("music-toggle");
+
+        let isPlaying = false;
+
+        toggle.addEventListener("click", () => {
+            if (isPlaying) {
+                music.pause();
+                toggle.textContent = "🎵 Play Music";
+            } else {
+                music.play();
+                toggle.textContent = "⏸ Pause Music";
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+
+    <div class="chatbot-widget">
+        <div class="chat-header">💬 AI Chatbot
+            <button id="chat-toggle">_</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <input type="text" id="user-input" placeholder="Ask me something..." />
+    </div>
+
+    <script>
+        const chatWidget = document.querySelector('.chatbot-widget');
+        const messages = document.getElementById('chat-messages');
+        const input = document.getElementById('user-input');
+        const chatToggle = document.getElementById('chat-toggle');
+
+        const replies = {
+            hello: "Hi there! 👋 I'm your AI assistant.",
+            project: "Please see the Projects section to see what I've built!",
+            who: "I'm a chatbot demo built with HTML, CSS, and JavaScript!",
+            thanks: "You're welcome! 😊",
+            hi: "Hi there! 👋 ",
+            skills: "C#, C++, HTML, CSS, JavaScript, Python, and exploring AI tech!",
+            contact: "You can reach me via the Contact section below!",
+            siri: "Siri is cool — but I’m here to give you a custom AI experience 😎",
+        };
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const userText = input.value.trim();
+                if (userText) {
+                    addMessage("You", userText);
+                    input.value = '';
+                    const reply = getBotReply(userText);
+                    setTimeout(() => addMessage("Bot", reply), 500);
+                }
+            }
+        });
+
+        function addMessage(sender, text) {
+            messages.innerHTML += `<p><strong>${sender}:</strong> ${text}</p>`;
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getBotReply(input) {
+            const text = input.toLowerCase();
+            for (const key in replies) {
+                if (text.includes(key)) return replies[key];
+            }
+            return "Hmm 🤔 Sorry, but I'm learning!";
+        }
+
+
+        chatToggle.addEventListener('click', () => {
+            messages.classList.toggle('hidden');
+            input.classList.toggle('hidden');
+            
+            // Optionally update button icon
+            if (messages.classList.contains('hidden')) {
+                chatToggle.textContent = '+'; // Show
+            } else {
+                chatToggle.textContent = '_'; // Minimize
+            }
+        });
+
+    </script>
+
 
 </body>
 </html>
