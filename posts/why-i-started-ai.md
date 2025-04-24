@@ -31,9 +31,9 @@ Next up, I'm planning to:
 
 ## 💬 Thanks for Reading!
 
-If you're also curious about AI or just starting your journey, I’d love to connect — feel free to comment below or check out more on my site!
+If you're also curious about AI or just starting your journey, I’d love to connect.
 
 ---
 
 *Stay curious,  
-– [Your Name]*
+– Meenakshi *
