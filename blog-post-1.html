@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why I Started Learning AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <style>
+        #content {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-family: sans-serif;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Loading post...</div>
+
+    <script>
+        fetch('posts/why-i-started-ai.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Markdown file not found');
+                }
+                return response.text();
+            })
+            .then(md => {
+                const converter = new showdown.Converter();
+                document.getElementById('content').innerHTML = converter.makeHtml(md);
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = `<p>Error loading post: ${error.message}</p>`;
+            });
+    </script>
+</body>
+</html>
