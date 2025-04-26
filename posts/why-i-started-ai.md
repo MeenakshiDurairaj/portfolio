@@ -4,7 +4,7 @@
 
 ---
 
-Artificial Intelligence has always fascinated me. From the first time I interacted with Siri to reading about how machines can learn on their own, I knew I wanted to dive deeper into this world.
+Artificial Intelligence is always a miracle for me and I looked at it as a magic like a child watching a magic show. When everyone talks about greatness of aritificial intelligence I always wondered what is so special about it. I was very keen to know about their technical stacks and techniques to handle millions of records in their search engine, recommendation apps, voice or image recognition.
 
 ## 🌟 What Inspired Me
 
