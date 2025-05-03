@@ -4,7 +4,7 @@
 
 ---
 
-Building my first chatbot was both exciting and a little intimidating. I started with a simple goal: create a bot that could have a basic conversation with a user.
+To explore AI functionalities, I started with a simple goal: create a bot that could have a basic conversation with a user. 
 
 ## 🧱 My Starting Point
 
