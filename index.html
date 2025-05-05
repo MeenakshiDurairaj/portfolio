@@ -424,6 +424,19 @@
                 }
             }
         });
+        /*
+        //To deplaoy chatbot from backend services
+        async function getBotResponse(message) {
+            const res = await fetch('http://localhost:3000/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            });
+            const data = await res.json();
+            return data.reply;
+        }
+        */
+
 
         function addMessage(sender, text) {
             messages.innerHTML += `<p><strong>${sender}:</strong> ${text}</p>`;
@@ -450,6 +463,40 @@
                 chatToggle.textContent = '🗕'; // Minimize
             }
         });
+
+        /*
+        option 2: chatbot - AI like flow using predefined topics - intent + responses
+
+        const botMemory = {
+  greeting: ["Hey there!", "Hi! 😊", "Hello! How can I help you?"],
+  about: ["I'm a JavaScript-based chatbot.", "I help you navigate this site!"],
+};
+
+function getBotResponse(input) {
+  const msg = input.toLowerCase();
+  if (msg.includes("hi") || msg.includes("hello")) return random(botMemory.greeting);
+  if (msg.includes("who") || msg.includes("what are you")) return random(botMemory.about);
+  return "Hmm... I’m still learning. Ask me something else!";
+}
+
+function random(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+
+
+option:3 chatbot - Simple Rule-based logic (No Backend or API needed)
+function getBotResponse(input) {
+  const msg = input.toLowerCase();
+  if (msg.includes("hello")) return "Hi there! 👋 How can I help you today?";
+  if (msg.includes("weather")) return "I can't predict the weather yet, but it's a beautiful day to code! ☀️";
+  if (msg.includes("name")) return "I'm your friendly chatbot, here to assist!";
+  return "I'm not sure I understand that. Could you try rephrasing?";
+}
+
+
+
+        */
 
     </script>
 
