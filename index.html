@@ -237,6 +237,77 @@
             }
 
 
+        /* Modal Container */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Overlay */
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Modal Box */
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s ease-out;
+        }
+
+            .modal-content img {
+                max-width: 100%;
+                border-radius: 8px;
+                margin: 1rem 0;
+            }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            color: #444;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
 
     </style>
 </head>
@@ -268,33 +339,118 @@
     <section id="projects" data-aos="fade-up">
         <h2>Projects</h2>
         <div class="projects">
-            <div class="project" data-aos="zoom-in" data-aos-delay="100">
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="100" onclick="openModal('modal1')">
                 <h3>Simple Chatbot</h3>
                 <p>A rule-based chatbot built with Python. It handles basic greetings and responses.</p>
             </div>
-            <div class="project" data-aos="zoom-in" data-aos-delay="200">
+            <!-- Modal -->
+            <div id="modal1" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal1')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+                    <h2>Simple Chatbot</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p>A simple chatbot which is tried using python with AI workflow and also implemented in portfolio using HTML, CSS and JS</p>
+                    <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Python</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
+            </div>
 
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="200" onclick="openModal('modal2')">
                 <h3>Toll System</h3>
                 <p>Worked on enhancement and maintenance work in the Toll system projects with C#, WINFORMS, ORACLE and Angular</p>
             </div>
-            <div class="project" data-aos="zoom-in" data-aos-delay="300">
-
-                <h3>Bevel Configuration</h3>
-                <p> Created desktop application for configuring bevel system using snell's law with C#, WPF and  MVVM.</p>
+            <!-- Modal -->
+            <div id="modal2" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal2')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+                    <h2>Toll System</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p>Toll system products are used in the transportation domain especially in the toll plazas to identify the type of the vehicle which crosses the plaza and charge them based on their axles or scanned transponders. Images and videos of the vehicle are captured in the system for further review and approval of toll transaction payments.</p>
+                    <p><strong>Tech Stack:</strong> C# WinForms, Datasets, Oracle, SQL server, C++, JSON, XML, GIT, TFS, JIRA, Azure DevOps, TeamCity, JETBRAINS – Dot Memory, New Relic, SendGrid, VS 2012 – 2019, .NET Framework, RTSP, Angular</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
             </div>
-            <div class="project" data-aos="zoom-in" data-aos-delay="400">
 
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="300" onclick="openModal('modal3')">
+                <h3>Configuration & Wizards</h3>
+                <p> Created desktop application for configuration tool and wizards to draw graphics with C#, WPF and  MVVM.</p>
+            </div>
+            <!-- Modal -->
+            <div id="modal3" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal3')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+                    <h2>Configuration & Wizards</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p>It is a desktop application which is applicable in material science domain used to process the inspected data from the welded material to find out the defects. The product will analyze the inspected data from the welded material to represent in the form of graphics design which is very helpful to understand the welded defects in the material.</p>
+                    <p><strong>Tech Stack:</strong>C# WPF, VS2015, MVVM architecture, GIT, VSTS.</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
+            </div>
+
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="400" onclick="openModal('modal4')">
                 <h3>Healthcare - Fitness </h3>
-                <p> Built an app which is used for diagnosis of patients to prescribe exercises. Used C#, WINFORMS, SQLite, C++, MVC, Image processing libraries like OpenCV, Emgucv.</p>
+                <p> Built an app which is used for Healthcare - Fitness to prescribe exercises. Used C#, WINFORMS, SQLite, C++, MVC, Image processing libraries like OpenCV, Emgucv.</p>
             </div>
-            <div class="project" data-aos="zoom-in" data-aos-delay="500">
+            <!-- Modal -->
+            <div id="modal4" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal4')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
+                    <h2>Healthcare - Fitness</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p>It is a desktop application which is mainly used in Health Care Domains. This application is very useful for physiotherapist, fitness people and widely used by Athletes since this application will advise prescribed exercises for the patients based on their muscle and body posture by analyzing their images with the help of image processing techniques.</p>
+                    <p><strong>Tech Stack:</strong>C# WinForms, VC++, SQL-lite, Bitbucket, GIT, JIRA, EMGU CV, Dotfuscator and ConfuserEx.</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
+            </div>
 
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="500" onclick="openModal('modal5')">
                 <h3>Maintenance Projects</h3>
                 <p>Participated in various maintenance projects using C, C++ with Linux background</p>
             </div>
-            <div class="project" data-aos="zoom-in" data-aos-delay="600">
+            <!-- Modal -->
+            <div id="modal5" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal5')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal5')">&times;</span>
+                    <h2>Maintenance Projects</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p><strong>Advertiser Solutions Group (ASG):</strong> In a real-time client/server environment, RepLine's Windows applications provide a variety of reports and on-line tools for up-to-the-minute data queries and analysis. This project involves time slots data for advertisements which is to be telecasted in the television programs and cost also varies based on duration of advertisement and peak hours. ASG is a two-tier application where the application and server were built in C/C++ and few servers were built in Assemblers and the database is ISAM.</p>
+                    <p><strong>Tech Stack:</strong>C, C++, ISAM, UNIX, Assembler, Ticket Time Tracker, patching</p>
+                    <br />
+                    <p>
+                        <strong>AAIS (Assignment Activation and Inventory System):</strong> AAIS has been designed as a client-server application following the 3-tier thin client architectural model. AAIS is a Client Server Application, which has its client in Java and its application and data servers running on Sun OS 5.7 developed using ESQL C++ and the database is Informix. The AAIS infrastructure consists of a data server cluster, a gateway infrastructure and client graphical user interface utilities (GUI). AAIS System has different modules and they are categorized into Inventory and Provisioning modules.
+                        The clients communicate with the data servers through the gateways using the AAIS middleware. This middleware is based on an asynchronous messaging model suitable for high transaction rate systems.
+                    </p>
+                    <p><strong>Tech Stack:</strong>Linux 7.1 boxes with Windows NT 4.0 running through VMWARE. Sun OS 5.7, C++, JAVA, Informix, Oracle 9.2, ESQL, WinRunner, PERL, and MS-Access. CVS, GDB, ValGrind, LeakTracer</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
+            </div>
+
+
+            <div class="project" data-aos="zoom-in" data-aos-delay="600" onclick="openModal('modal6')">
                 <h3>Software Products</h3>
                 <p> Created software products using VC++, MFC, SQL, HTML, CSS, JAVAScript and ASP.net</p>
+            </div>
+            <!-- Modal -->
+            <div id="modal6" class="custom-modal">
+                <div class="modal-overlay" onclick="closeModal('modal6')"></div>
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal6')">&times;</span>
+                    <h2>Software Products</h2>
+                    <!--<img src="https://via.placeholder.com/400x200" alt="Chatbot Screenshot" />-->
+                    <p>The Ajira Service Process Management Suite provides a secure way to obtain visibility into service processes, monitor them in real-time, identify exceptions as they arise, and escalate them to the appropriate people using e-mail and web-based reports. There are two main modules handled by me in this product they are Ajira Process Modeler and Ajira Process Monitor.</p>
+                    <p><strong>Tech Stack:</strong> VC++, COM, MFC, C++ Win32, SQL server, Glow Code, Bugzilla, Visual Source Safe, ASP.Net, C#, SharePoint server</p>
+                    <!--<a href="https://github.com/yourusername/chatbot" target="_blank">View on GitHub</a>-->
+                </div>
             </div>
             <div class="project" data-aos="zoom-in" data-aos-delay="300">
                 <h3>Portfolio Website</h3>
@@ -450,6 +606,14 @@
                 chatToggle.textContent = '🗕'; // Minimize
             }
         });
+
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
 
     </script>
 
